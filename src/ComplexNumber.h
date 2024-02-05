@@ -5,6 +5,7 @@
 #ifndef COMPLEXNUMBERS_COMPLEXNUMBER_H
 #define COMPLEXNUMBERS_COMPLEXNUMBER_H
 
+#include <cmath>
 #include <iostream>
 
 using namespace std;
@@ -20,9 +21,13 @@ public:
     ComplexNumber operator +(const ComplexNumber&) const;
     ComplexNumber operator -(const ComplexNumber&) const;
     ComplexNumber operator *(const ComplexNumber&) const;
+    ComplexNumber operator /(const ComplexNumber&) const;
 
     // Print operator
     friend ostream& operator <<(ostream&, const ComplexNumber&);
+
+    // Other functions
+    pair<ComplexNumber, ComplexNumber> Roots() const;
 
 private:
 
