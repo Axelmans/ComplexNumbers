@@ -22,6 +22,22 @@ public:
     ComplexNumber operator -(const ComplexNumber&) const;
     ComplexNumber operator *(const ComplexNumber&) const;
     ComplexNumber operator /(const ComplexNumber&) const;
+    void operator +=(const ComplexNumber&);
+    void operator -=(const ComplexNumber&);
+    void operator *=(const ComplexNumber&);
+    void operator /=(const ComplexNumber&);
+    ComplexNumber operator +(const double&) const;
+    ComplexNumber operator -(const double&) const;
+    ComplexNumber operator *(const double&) const;
+    ComplexNumber operator /(const double&) const;
+    void operator +=(const double&);
+    void operator -=(const double&);
+    void operator *=(const double&);
+    void operator /=(const double&);
+
+    // Comparison operators
+    bool operator ==(const ComplexNumber&) const;
+    bool operator ==(const double&) const;
 
     // Print operator
     friend ostream& operator <<(ostream&, const ComplexNumber&);

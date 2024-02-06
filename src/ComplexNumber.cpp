@@ -36,10 +36,61 @@ ComplexNumber ComplexNumber::operator/(const ComplexNumber &other) const {
     return {real/divisor, imaginary/divisor};
 }
 
+void ComplexNumber::operator+=(const ComplexNumber &other) {
+    *this = *this + other;
+}
+
+void ComplexNumber::operator-=(const ComplexNumber &other) {
+    *this = *this - other;
+}
+
+void ComplexNumber::operator*=(const ComplexNumber &other) {
+    *this = *this * other;
+}
+
+void ComplexNumber::operator/=(const ComplexNumber &other) {
+    *this = *this / other;
+}
+
+ComplexNumber ComplexNumber::operator+(const double &r) const {
+    return {mReal + r, mImaginary};
+}
+
+ComplexNumber ComplexNumber::operator-(const double &r) const {
+    return *this + -r;
+}
+
+ComplexNumber ComplexNumber::operator*(const double &r) const {
+    return {mReal * r, mImaginary * r};
+}
+
+ComplexNumber ComplexNumber::operator/(const double &r) const {
+    if(r == 0){
+        throw logic_error("Error: Division by 0!");
+    }
+    return {mReal / r, mImaginary / r};
+}
+
+void ComplexNumber::operator+=(const double &r) {
+    *this = *this + r;
+}
+
+void ComplexNumber::operator-=(const double &r) {
+    *this = *this - r;
+}
+
+void ComplexNumber::operator*=(const double &r) {
+    *this = *this * r;
+}
+
+void ComplexNumber::operator/=(const double &r) {
+    *this = *this / r;
+}
+
 ostream &operator<<(ostream &o, const ComplexNumber& c) {
     // if both components a and b are 0: print 0
     if(c.mReal == 0 && c.mImaginary == 0){
-        o << 0 << endl;
+        o << 0;
         return o;
     }
     // if either component is zero, they should not be printed
@@ -48,14 +99,14 @@ ostream &operator<<(ostream &o, const ComplexNumber& c) {
     }
     // plus or minus only if real part is nonzero, depends on sign of imaginary part
     if(c.mReal != 0 && c.mImaginary > 0){
-        o << " + " << c.mImaginary << 'i' << endl;
+        o << " + " << c.mImaginary << 'i';
     }
     else if(c.mReal != 0 && c.mImaginary < 0){
-        o << " - " << -c.mImaginary << 'i' << endl;
+        o << " - " << -c.mImaginary << 'i';
     }
     // if only imaginary part: print imaginary part with sign before it
     else if(c.mImaginary != 0){
-        o << c.mImaginary << 'i' << endl;
+        o << c.mImaginary << 'i';
     }
     return o;
 }
@@ -74,4 +125,10 @@ pair<ComplexNumber, ComplexNumber> ComplexNumber::Roots() const {
     }
 }
 
+bool ComplexNumber::operator==(const ComplexNumber &other) const {
+    return mReal == other.mReal && mImaginary == other.mImaginary;
+}
 
+bool ComplexNumber::operator==(const double &r) const {
+    return mReal == r && mImaginary == 0;
+}

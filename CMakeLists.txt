@@ -4,6 +4,7 @@ project(ComplexNumbers)
 add_executable(
         ComplexNumbers
         src/ComplexNumber.cpp
+        src/QuadraticEquation.cpp
         main.cpp
 )
 

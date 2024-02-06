@@ -1,5 +1,11 @@
-#include "src/ComplexNumber.h"
+#include "src/QuadraticEquation.h"
 
 int main(){
-    cout << ComplexNumber{-4, 5};
+    ComplexNumber a{2, 0};
+    ComplexNumber b{-3, 0};
+    ComplexNumber c{6, 0};
+    QuadraticEquation e{{c, b, a}};
+    for(auto &solution: e.Solve()){
+        cout << solution << endl;
+    }
 }
