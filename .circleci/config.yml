@@ -1,0 +1,13 @@
+version: 2.1
+
+jobs:
+  build:
+    resource_class: small
+    docker:
+      - image: ubuntu:22.04
+    steps:
+      - checkout
+        # Compile the whole project
+      - run: mkdir -p build
+      - run: cd build && cmake ..
+      - run: cd build && make
